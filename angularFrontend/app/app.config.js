@@ -48,7 +48,13 @@ angular.module('app')
     .state('dashboard', {
       url: "/dashboard",
       templateUrl: "features/dashboard/dashboard.html",
-      
+      controller: 'DashboardCtrl',
+      controllerAs: 'vm'
+    })
+      .state('dashboard.event', {
+      url: "/dashboard/event",
+      templateUrl: "features/dashboard/event/event.html",
+      controller: 'EventCtrl',
+      controllerAs: 'vm'
     });
-    
 });

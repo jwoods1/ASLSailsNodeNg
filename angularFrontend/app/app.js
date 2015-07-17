@@ -19,8 +19,10 @@ require('./app.module');
 //route config
 require('./app.config');
 //angular controllers
-require('./features/home/home');
-require('./features/users/userCtrl')
+require('./features/home/homeCtrl');
+require('./features/users/userCtrl');
+require('./features/dashboard/dashboardCtrl');
+require('./features/dashboard/events/eventCtrl');
 
 
 
