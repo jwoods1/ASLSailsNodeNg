@@ -7,8 +7,11 @@ angular
     	var vm = this;
     	vm.hello = "world";
 		
-		vm.login = function(){
+		vm.twitterLogin= function(){
 			$auth.authenticate('twitter');
 		}
+        vm.facebookLogin = function(){
+			$auth.authenticate('facebook');
+		}
 
-    }
+    };

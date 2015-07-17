@@ -8,7 +8,18 @@
 module.exports = {
 
   attributes: {
-
-  }
+    email: { 
+      type: 'string', 
+      unique: true, 
+      lowercase: true 
+      },
+    password: { type: 'string', 
+      select: false 
+      },
+    displayName: 'string',
+    picture: 'string',
+    facebook: 'string',
+    twitter: 'string'
+    }
 };
 

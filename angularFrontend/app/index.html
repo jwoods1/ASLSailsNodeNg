@@ -3,10 +3,44 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Methodize Planner</title>
+	<link rel="stylesheet" href="./styles/bootstrap.min.css">
 </head>
 <body >
-  
-	<div ui-view></div>
+	<div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">Methodized Planner</h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li><a ui-sref="home">Home</a></li>
+                  <li><a ui-sref="features">Features</a></li>
+                  <li><a ui-sref="contactus"">Contact</a></li>
+                  <li><a ui-sref="login">Login</a></li>
+                  <li><a ui-sref="dashboard">temp Link</a></li>
+                </ul>
+              </nav>
+            </div>
+              <hr>
+          </div>
+
+      <ui-view></ui-view>
+          <div class="mastfoot">
+            <div class="inner">
+             <p>By Jason Woods</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+	
 	<script src="bundle.js"></script>
 </body>
 </html>

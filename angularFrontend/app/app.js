@@ -1,8 +1,9 @@
 //gloabals
 //global.$ = global.jQuery = require('jquery');   
 //global.moment = require('moment'); 
-//styles
-//require('../node_modules/angular-material/angular-material');
+//styles'
+
+require('./styles/main.scss');
 //require angular and components
 
 var angular = require('angular');
@@ -16,9 +17,10 @@ require('./app.module');
 
 
 //route config
-require('./route.config');
+require('./app.config');
 //angular controllers
 require('./features/home/home');
+require('./features/users/userCtrl')
 
 
 
