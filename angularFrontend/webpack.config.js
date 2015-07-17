@@ -26,12 +26,13 @@ module.exports = {
     ]
   },
   resolve: {
+     
       // you can now require('file') instead of require('file.coffee')
       extensions: ['', '.js', '.json'] ,
       modulesDirectories: ['node_modules']
     },
     devServer:{
-       proxy:{"/api/*": "http://localhost:1337"}
+       proxy:{"/api/*/*": "http://localhost:1337"}
     }
     
 
