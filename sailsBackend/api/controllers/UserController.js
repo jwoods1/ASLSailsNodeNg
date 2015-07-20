@@ -109,7 +109,7 @@ module.exports = {
 									twitter : profile.id,
 									displayName : profile.name,
 		                        	picture : profile.profile_image_url.replace('_normal', '')
-								}).exec(function(){
+								}).exec(function(err,user){
 									var token = createToken(user);
 									 res.send({
 		                                token: createToken(user)
@@ -178,7 +178,7 @@ module.exports = {
 							facebook : profile.id,
 							displayName : profile.name,
                         	picture : 'https://graph.facebook.com/' + profile.id + '/picture?type=large'
-						}).exec(function(){
+						}).exec(function(err, user){
 							var token = createToken(user);
 							 res.send({
                                 token: createToken(user)

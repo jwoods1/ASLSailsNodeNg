@@ -9,6 +9,7 @@ require('./styles/main.scss');
 var angular = require('angular');
 require('angular-ui-router');
 require('satellizer');
+require('angular-strap');
 //require('angular-material');
 //require('node-lumx');
 
