@@ -10,12 +10,14 @@ var angular = require('angular');
 require('angular-ui-router');
 require('satellizer');
 require('angular-strap');
+require('./../node_modules/angular-strap/dist/angular-strap.tpl.js');
 //require('angular-material');
 //require('node-lumx');
 
 //init angular module
 require('./app.module');
-
+//serices
+require('./services/account');
 
 //route config
 require('./app.config');

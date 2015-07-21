@@ -169,8 +169,9 @@ module.exports = {
                         facebook: profile.id
                     }, function(err, existingUser) {
                         if (existingUser) {
+                            var token = createToken(existingUser);
                             return res.send({
-                                token: createToken(existingUser)
+                                token: token
                             });
                         }
 
@@ -181,7 +182,7 @@ module.exports = {
 						}).exec(function(err, user){
 							var token = createToken(user);
 							 res.send({
-                                token: createToken(user)
+                                token: token
                             });
 						})
                     });
@@ -189,7 +190,22 @@ module.exports = {
 		    });
 		  });
 			
-		}
+		},
+        
+       me: function(req, res) {
+            
+           console.log(req);
+        User.findOne(req.userId, function(err, user) {
+            res.send(user);
+            console.log(user);
+          });
+        }
+    /*
+     |--------------------------------------------------------------------------
+     | PUT /api/me
+     |--------------------------------------------------------------------------
+     */
+   
 	
 };
 
@@ -200,4 +216,25 @@ function createToken(user) {
     exp: moment().add(14, 'days').unix()
   };
   return jwt.encode(payload, config.TOKEN_SECRET);
+};
+
+function ensureAuthenticated(req, res, next) {
+  if (!req.headers.authorization) {
+    return res.status(401).send({ message: 'Please make sure your request has an Authorization header' });
+  }
+  var token = req.headers.authorization.split(' ')[1];
+
+  var payload = null;
+  try {
+    payload = jwt.decode(token, config.TOKEN_SECRET);
+  }
+  catch (err) {
+    return res.status(401).send({ message: err.message });
+  }
+
+  if (payload.exp <= moment().unix()) {
+    return res.status(401).send({ message: 'Token has expired' });
+  }
+  req.user = payload.sub;
+  next();
 }

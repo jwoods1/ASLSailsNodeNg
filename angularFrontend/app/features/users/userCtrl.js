@@ -5,14 +5,15 @@ angular
     .controller('UserCtrl', UserCtrl);
 	    function UserCtrl($scope, $auth, $alert){
 	    	var vm = this;
+			vm.hello = 'hello';
 	    	//user non social signup / login / logout
 			vm.signup = function(){
 				vm.email;
 				vm.password;
 				$auth.signup({
-			        displayName: $scope.displayName,
-			        email: $scope.email,
-			        password: $scope.password
+			        displayName: vm.displayName,
+			        email: vm.email,
+			        password: vm.password
 			      }).catch(function(response) {
 			        if (typeof response.data.message === 'object') {
 			          angular.forEach(response.data.message, function(message) {
@@ -37,7 +38,7 @@ angular
 			vm.login = function(){
 				 $auth.login({ email: vm.email, password: vm.password })
 			        .then(function() {
-			          console.log({
+			          $alert({
 			            content: 'You have successfully logged in',
 			            animation: 'fadeZoomFadeDown',
 			            type: 'material',

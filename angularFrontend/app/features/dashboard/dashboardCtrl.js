@@ -2,21 +2,26 @@ module.exports =
 
 angular
     .module('app')
-    .controller('DashboardCtl', DashboardCtl);
-    function DashboardCtl($scope, $auth){
+    .controller('DashboardCtrl', DashboardCtrl);
+    function DashboardCtrl($scope, $auth, Account, $alert){
     	var vm = this;
-    	vm.hello = "world";
-		vm.signup = function(){
-			vm.email;
-			vm.password;
-			
-		}
+    	
+		vm.getProfile = function() {
+	      Account.getProfile()
+	        .success(function(data) {
+	          vm.user = data;
+              console.log(vm.user);
+	        })
+	        .error(function(error) {
+	          console.log({
+	            content: error.message,
+	            animation: 'fadeZoomFadeDown',
+	            type: 'material',
+	            duration: 3
+	          });
+       		 });
+    	};
 		
-		vm.twitterLogin= function(){
-			$auth.authenticate('twitter');
-		}
-        vm.facebookLogin = function(){
-			$auth.authenticate('facebook');
-		}
+		vm.getProfile();
 
     };
