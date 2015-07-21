@@ -30,7 +30,8 @@ module.exports.policies = {
   UserController: {
 		'facebook': true,
     	'twitter': true,
-		'me':['jwtAuth']
+		'me':['jwtAuth'],
+		'signup':true
 	}
 	
 

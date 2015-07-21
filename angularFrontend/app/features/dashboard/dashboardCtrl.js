@@ -21,7 +21,20 @@ angular
 	          });
        		 });
     	};
-		
+		vm.logout = function(){
+				if (!$auth.isAuthenticated()) {
+		        return;
+			    }
+			    $auth.logout()
+			      .then(function() {
+			        console.log({
+			          content: 'You have been logged out',
+			          animation: 'fadeZoomFadeDown',
+			          type: 'material',
+			          duration: 3
+			        });
+			      });
+			};
 		vm.getProfile();
 
     };

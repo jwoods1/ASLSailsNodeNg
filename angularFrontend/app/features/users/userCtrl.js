@@ -5,7 +5,6 @@ angular
     .controller('UserCtrl', UserCtrl);
 	    function UserCtrl($scope, $auth, $alert){
 	    	var vm = this;
-			vm.hello = 'hello';
 	    	//user non social signup / login / logout
 			vm.signup = function(){
 				vm.email;
@@ -75,20 +74,7 @@ angular
 			          });
 			        });
 			    };
-			vm.logout = function(){
-				if (!$auth.isAuthenticated()) {
-		        return;
-			    }
-			    $auth.logout()
-			      .then(function() {
-			        console.log({
-			          content: 'You have been logged out',
-			          animation: 'fadeZoomFadeDown',
-			          type: 'material',
-			          duration: 3
-			        });
-			      });
-			};
+			
 
 			
     };

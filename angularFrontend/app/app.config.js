@@ -11,7 +11,9 @@ angular.module('app')
 			 url: 'api/user/facebook',
 		})
 		$authProvider.withCredentials = false;
-		$authProvider.signupUrl = 'api/user';
+		$authProvider.signupUrl = 'api/user/signup';
+    $authProvider.loginUrl = 'api/user/login';
+    $authProvider.loginRedirect = '/dashboard';
   
   // For any unmatched url, redirect to /state1
   $urlRouterProvider.otherwise("/");
@@ -38,18 +40,33 @@ angular.module('app')
       templateUrl: "features/users/login.html",
       controller: 'UserCtrl',
       controllerAs: 'vm'
+  
     })
     .state('signup', {
       url: "/signup",
       templateUrl: "features/users/signup.html",
       controller: 'UserCtrl',
       controllerAs: 'vm'
+ 
     })
     .state('dashboard', {
       url: "/dashboard",
       templateUrl: "features/dashboard/dashboard.html",
       controller: 'DashboardCtrl',
-      controllerAs: 'vm'
+      controllerAs: 'vm',
+      resolve: {
+          authenticated: function($q, $location, $auth) {
+            var deferred = $q.defer();
+
+            if (!$auth.isAuthenticated()) {
+              $location.path('/login');
+            } else {
+              deferred.resolve();
+            }
+
+            return deferred.promise;
+          }
+        }
     })
       .state('dashboard.event', {
       url: "/dashboard/event",

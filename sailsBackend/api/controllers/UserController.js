@@ -191,21 +191,32 @@ module.exports = {
 		  });
 			
 		},
-        
+        //email password signup
+       signup: function(req,res){
+           User.findOne({ email: req.body.email }, function(err, existingUser) {
+            if (existingUser) {
+              return res.status(409).send({ message: 'Email is already taken' });
+            }
+            User.create({
+				email : req.body.email,
+				displayName : req.body.displayName,
+            	password: req.body.password
+			}).exec(function(err, user){
+				var token = createToken(user);
+				 res.send({
+                    token: token
+                });
+			})
+        });
+       },
+       //get user info 
        me: function(req, res) {
-            
-           console.log(req);
-        User.findOne(req.userId, function(err, user) {
+         User.findOne(req.userId, function(err, user) {
             res.send(user);
-            console.log(user);
+       
           });
         }
-    /*
-     |--------------------------------------------------------------------------
-     | PUT /api/me
-     |--------------------------------------------------------------------------
-     */
-   
+    
 	
 };
 
@@ -218,23 +229,4 @@ function createToken(user) {
   return jwt.encode(payload, config.TOKEN_SECRET);
 };
 
-function ensureAuthenticated(req, res, next) {
-  if (!req.headers.authorization) {
-    return res.status(401).send({ message: 'Please make sure your request has an Authorization header' });
-  }
-  var token = req.headers.authorization.split(' ')[1];
 
-  var payload = null;
-  try {
-    payload = jwt.decode(token, config.TOKEN_SECRET);
-  }
-  catch (err) {
-    return res.status(401).send({ message: err.message });
-  }
-
-  if (payload.exp <= moment().unix()) {
-    return res.status(401).send({ message: 'Token has expired' });
-  }
-  req.user = payload.sub;
-  next();
-}

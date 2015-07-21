@@ -10,12 +10,9 @@ module.exports = {
   attributes: {
     email: { 
       type: 'string', 
-      unique: true, 
-      lowercase: true 
+      unique: true
       },
-    password: { type: 'string', 
-      select: false 
-      },
+    password: { type: 'string'},
     displayName: 'string',
     picture: 'string',
     facebook: 'string',
