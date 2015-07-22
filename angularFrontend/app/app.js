@@ -1,9 +1,7 @@
 //gloabals
 //global.$ = global.jQuery = require('jquery');   
 //global.moment = require('moment'); 
-//styles'
 
-require('./styles/main.scss');
 //require angular and components
 
 var angular = require('angular');

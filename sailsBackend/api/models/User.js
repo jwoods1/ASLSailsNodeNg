@@ -16,7 +16,8 @@ module.exports = {
     displayName: 'string',
     picture: 'string',
     facebook: 'string',
-    twitter: 'string'
+    twitter: 'string',
+    events: 'string'
     }
 };
 

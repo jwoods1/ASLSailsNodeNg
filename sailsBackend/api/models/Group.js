@@ -14,6 +14,12 @@ module.exports = {
         eventId: 'string',
         title:'string',
         memebers:'string'
+      },
+      members:{
+        
+      },
+      owner:{
+         model: 'user'
       }
      }
 };

@@ -26,15 +26,6 @@ angular.module('app')
       controller: "HomeCtrl",
       controllerAs: "vm"
     })
-     .state('features', {
-      url: "/features",
-      templateUrl: "features/home/newFeatures.html",
-    })
-     .state('contactus', {
-      url: "/contactus",
-      templateUrl: "features/home/contactus.html",
-    })
-   
     .state('login', {
       url: "/login",
       templateUrl: "features/users/login.html",

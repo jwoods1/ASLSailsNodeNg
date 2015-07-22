@@ -1,0 +1,28 @@
+.home-header{
+	height:500px;
+	width:100%;
+	background-image: url('../images/mainBackground.jpg');
+	background-size:cover;
+	background-repeat: no-repeat;
+	text-align: center;
+
+}
+.login-btn{
+	margin:25px 100px;
+}
+.logo-background{
+	position: relative;
+	top:150px;
+	padding:50px;
+	background:rgba(251, 241, 215, 0.57);
+}
+.even-row ,.odd-row{
+	padding:50px 100px;
+	
+	height:300px;
+	width:100%;
+	
+}
+.even-row{
+	background:rgba(229, 88, 71, 0.82);
+}
