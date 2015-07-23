@@ -1,6 +1,6 @@
 //gloabals
-//global.$ = global.jQuery = require('jquery');   
-//global.moment = require('moment'); 
+global.$ = global.jQuery = require('jquery');   
+global.moment = require('moment'); 
 
 //require angular and components
 
@@ -9,6 +9,10 @@ require('angular-ui-router');
 require('satellizer');
 require('angular-strap');
 require('./../node_modules/angular-strap/dist/angular-strap.tpl.js');
+
+
+require('./libs/calendar');
+require('fullcalendar');
 //require('angular-material');
 //require('node-lumx');
 

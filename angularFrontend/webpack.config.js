@@ -25,6 +25,7 @@ module.exports = {
       {test : /\.html/, loader: 'raw'}
     ]
   },
+  
   resolve: {
      
       // you can now require('file') instead of require('file.coffee')

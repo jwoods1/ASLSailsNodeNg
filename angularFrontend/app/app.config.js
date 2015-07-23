@@ -30,15 +30,39 @@ angular.module('app')
       url: "/login",
       templateUrl: "features/users/login.html",
       controller: 'UserCtrl',
-      controllerAs: 'vm'
-  
+      controllerAs: 'vm',
+       resolve: {
+          authenticated: function($q, $location, $auth) {
+            var deferred = $q.defer();
+
+            if ($auth.isAuthenticated()) {
+              $location.path('/dashboard');
+            } else {
+              deferred.resolve();
+            }
+
+            return deferred.promise;
+          }
+       }
     })
     .state('signup', {
       url: "/signup",
       templateUrl: "features/users/signup.html",
       controller: 'UserCtrl',
-      controllerAs: 'vm'
- 
+      controllerAs: 'vm',
+      resolve: {
+              authenticated: function($q, $location, $auth) {
+                var deferred = $q.defer();
+    
+                if ($auth.isAuthenticated()) {
+                  $location.path('/dashboard');
+                } else {
+                  deferred.resolve();
+                }
+    
+                return deferred.promise;
+              }
+           }
     })
     .state('dashboard', {
       url: "/dashboard",

@@ -3,9 +3,28 @@ module.exports =
 angular
     .module('app')
     .controller('DashboardCtrl', DashboardCtrl);
-    function DashboardCtrl($scope, $auth, Account, $alert){
+    function DashboardCtrl($scope, $auth, Account, $alert, uiCalendarConfig){
     	var vm = this;
-    	
+    	vm.events = [];
+		vm.clickedCal = function(){
+			alert('clicked cal');
+		};
+		vm.uiConfig= {
+			calendar:{
+				height:450,
+				editable:true,
+				header:{
+					left:'month basicWeek basicDay agendaWeek agendaDay',
+					center: 'title',
+					right: 'today prev,next'
+				},
+				dayClick: vm.clickedCal
+			}
+		};
+		
+		
+		
+		
 		vm.getProfile = function() {
 	      Account.getProfile()
 	        .success(function(data) {
