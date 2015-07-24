@@ -32,6 +32,12 @@ module.exports.policies = {
     	'twitter': true,
 		'me':['jwtAuth'],
 		'signup':true
+	},
+	EventController: {
+		'*':true
+	},
+	GroupController: {
+		'*':true
 	}
 	
 

@@ -1,13 +1,25 @@
+var moment = require('moment');
 module.exports =
 
 angular
     .module('app')
     .controller('DashboardCtrl', DashboardCtrl);
-    function DashboardCtrl($scope, $auth, Account, $alert, uiCalendarConfig){
+    function DashboardCtrl($scope, $http, $auth, Account, $alert, uiCalendarConfig){
     	var vm = this;
-    	vm.events = [];
+		vm.events = [];
+		$http.get('/api/event/')
+			.then(function(events){
+				for (var i = 0; i < events.data.length; i++) {
+					var time = events.data[i].start;
+					moment(time).format('MMM Do YYYY, h:mm:ss a');
+				}
+				
+				vm.events.push(events.data);
+				console.log(vm.events);
+			});
+		
 		vm.clickedCal = function(){
-			alert('clicked cal');
+			console.log('clicked cal');
 		};
 		vm.uiConfig= {
 			calendar:{
@@ -18,7 +30,12 @@ angular
 					center: 'title',
 					right: 'today prev,next'
 				},
-				dayClick: vm.clickedCal
+				selectable: true,
+				select: function(start, end, jsEvent, view){
+					console.log(start);
+					console.log(jsEvent);
+					console.log(view);
+				}
 			}
 		};
 		

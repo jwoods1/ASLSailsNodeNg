@@ -10,16 +10,13 @@ module.exports = {
   attributes: {
       groupName: 'string',
       picture: 'string',
-      events:{
-        eventId: 'string',
-        title:'string',
-        memebers:'string'
-      },
       members:{
-        
+        collection: 'user',
+        via: 'group'
       },
-      owner:{
-         model: 'user'
+      events:{
+         collection: 'event',
+         via:'group'
       }
      }
 };

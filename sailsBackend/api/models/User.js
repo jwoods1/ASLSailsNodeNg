@@ -17,7 +17,13 @@ module.exports = {
     picture: 'string',
     facebook: 'string',
     twitter: 'string',
-    events: 'string'
+    events: {
+      collection: 'event',
+      via:'personal'
+    },
+    group:{
+      model:'group'
+    }
     }
 };
 

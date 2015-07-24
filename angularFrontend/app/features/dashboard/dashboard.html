@@ -1,8 +1,9 @@
 <div class="row">
 	<div class="col-md-4">
-		<div ui-calendar="vm.uiConfig.calendar" ng-model="vm.events"></div>
+		<div ui-calendar="{{vm.uiConfig.calendar}}" ng-model="vm.events"></div>
 	</div>
 	<div class="col-md-3">
+		{{vm.events}}
 		<div class="panel panel-info">
 		  <div class="panel-body row">
 			  <div class="col-md-4">
