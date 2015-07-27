@@ -24,7 +24,20 @@ angular.module('app')
       url: "/",
       templateUrl: "features/home/home.html",
       controller: "HomeCtrl",
-      controllerAs: "vm"
+      controllerAs: "vm",
+      resolve: {
+          authenticated: function($q, $location, $auth) {
+            var deferred = $q.defer();
+
+            if ($auth.isAuthenticated()) {
+              $location.path('/dashboard');
+            } else {
+              deferred.resolve();
+            }
+
+            return deferred.promise;
+          }
+       }
     })
     .state('login', {
       url: "/login",
@@ -68,7 +81,7 @@ angular.module('app')
       url: "/dashboard",
       templateUrl: "features/dashboard/dashboard.html",
       controller: 'DashboardCtrl',
-      controllerAs: 'vm',
+      controllerAs: 'dashboard',
       resolve: {
           authenticated: function($q, $location, $auth) {
             var deferred = $q.defer();
@@ -85,8 +98,8 @@ angular.module('app')
     })
       .state('dashboard.event', {
       url: "/dashboard/event",
-      templateUrl: "features/dashboard/event/event.html",
+      templateUrl: "features/dashboard/events/event.html",
       controller: 'EventCtrl',
-      controllerAs: 'vm'
+      controllerAs: 'event'
     });
 });

@@ -1,1 +1,1 @@
-module.exports = angular.module('app',['ui.router', 'satellizer','mgcrea.ngStrap','ui.calendar']);
+module.exports = angular.module('app',['ui.router', 'satellizer','mgcrea.ngStrap','ui.calendar', 'angularSails.io']);

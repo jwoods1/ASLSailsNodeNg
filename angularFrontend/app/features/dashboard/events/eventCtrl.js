@@ -3,20 +3,23 @@ module.exports =
 angular
     .module('app')
     .controller('EventCtrl', EventCtrl);
-    function EventCtrl($scope, $auth){
-    	var vm = this;
-    	vm.hello = "world";
-		vm.signup = function(){
-			vm.email;
-			vm.password;
-			
-		}
+    function EventCtrl($scope, $http){
+    	var event = this;
 		
-		vm.twitterLogin= function(){
-			$auth.authenticate('twitter');
-		}
-        vm.facebookLogin = function(){
-			$auth.authenticate('facebook');
-		}
+		event.scheduleEvent = function(){
+			$http.post('api/event/schedule',{
+				message: {
+					title:event.title,
+					allDay: event.allDay,
+					start: event.startTime,
+					end: event.endTime,
+					editable: event.isEditable,
+					group: event.groupId
+				
+				}
+			})
+			console.log("sent");
+		};
 
+		
     };

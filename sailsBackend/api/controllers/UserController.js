@@ -211,12 +211,12 @@ module.exports = {
        },
        //get user info 
        me: function(req, res) {
-         User.findOne(req.userId, function(err, user) {
-            res.send(user);
-       
-          });
+         User.findOne(req.userId).populate('events')
+         .exec( function(err, user) {
+              res.send(user);
+         });
         }
-    
+       
 	
 };
 

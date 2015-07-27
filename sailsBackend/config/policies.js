@@ -34,7 +34,9 @@ module.exports.policies = {
 		'signup':true
 	},
 	EventController: {
-		'*':true
+	 'schedule':['jwtAuth'],
+	 'update':['jwtAuth'],
+	 'remove':true
 	},
 	GroupController: {
 		'*':true

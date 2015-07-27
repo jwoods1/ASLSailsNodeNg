@@ -9,6 +9,8 @@ require('angular-ui-router');
 require('satellizer');
 require('angular-strap');
 require('./../node_modules/angular-strap/dist/angular-strap.tpl.js');
+require('./../node_modules/angularsails/dist/ngsails.io');
+require('./../node_modules/bootstrap/dist/js/bootstrap.min.js');
 
 
 require('./libs/calendar');
