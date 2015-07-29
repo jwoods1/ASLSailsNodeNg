@@ -1,0 +1,114 @@
+{
+  "data": {
+    "event": [],
+    "group": [],
+    "user": []
+  },
+  "schema": {
+    "event": {
+      "title": {
+        "type": "string"
+      },
+      "allDay": {
+        "type": "boolean"
+      },
+      "start": {
+        "type": "date"
+      },
+      "end": {
+        "type": "date"
+      },
+      "editable": {
+        "type": "boolean"
+      },
+      "group": {
+        "type": "integer",
+        "model": "group",
+        "foreignKey": true,
+        "alias": "group"
+      },
+      "personal": {
+        "type": "integer",
+        "model": "user",
+        "foreignKey": true,
+        "alias": "personal"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "group": {
+      "groupName": {
+        "type": "string"
+      },
+      "picture": {
+        "type": "string"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "user": {
+      "email": {
+        "type": "string",
+        "unique": true
+      },
+      "password": {
+        "type": "string"
+      },
+      "displayName": {
+        "type": "string"
+      },
+      "picture": {
+        "type": "string"
+      },
+      "facebook": {
+        "type": "string"
+      },
+      "twitter": {
+        "type": "string"
+      },
+      "group": {
+        "type": "integer",
+        "model": "group",
+        "foreignKey": true,
+        "alias": "group"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    }
+  },
+  "counters": {
+    "event": {},
+    "group": {},
+    "user": {}
+  }
+}
