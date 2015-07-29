@@ -34988,12 +34988,12 @@
 
 /***/ },
 /* 115 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	/* WEBPACK VAR INJECTION */(function(console) {'use strict';
+	'use strict';
 
 	module.exports = angular.module('app').controller('EventCtrl', EventCtrl);
-	function EventCtrl($scope, $http) {
+	function EventCtrl($scope, $http, $mdBottomSheet) {
 		var event = this;
 
 		event.scheduleEvent = function () {
@@ -35008,10 +35008,13 @@
 
 				}
 			});
-			console.log("sent");
+		};
+		event.openBottomSheet = function () {
+			$mdBottomSheet.show({
+				templateUrl: './dashboard/events/bottom-sheet.html'
+			});
 		};
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }
 /******/ ]);
