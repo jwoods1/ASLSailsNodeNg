@@ -1,14 +1,8 @@
- <div id="wrapper">
-
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#">
-                        Start Bootstrap
-                    </a>
-                </li>
-                <li>
+<div class="row">
+    <div class="col m2 deep-orange darken-4 z-depth-2 ">
+        <img class="responsive-img margin-top-20" src="./images/logo.png" alt="">
+        <ul class=" teal-text lighten-5-text>
+            <li>
                     <a href="#">Dashboard</a>
                 </li>
                 <li>
@@ -26,37 +20,28 @@
                 <li>
                     <a ng-click="dashboard.logout()">Logout</a>
                 </li>
-            </ul>
-        </div>
-        <!-- /#sidebar-wrapper -->
-
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div id="calendar" ui-calendar="dashboard.uiConfig.calendar" ng-model="dashboard.events"></div>
-                    </div>
-					<div class="col-md-4">
-						<div class="panel panel-info">
-						  <div class="panel-body row">
-							  <div class="col-md-4">
-							<img class="img-responsive img-circle" src="{{dashboard.user.picture}}" alt="">
-								  
-							  </div>
-						   <p>#events: {{dashboard.user.events.length}}</p>
-						  </div>
-						  <div class="panel-footer panel-primary">{{dashboard.user.displayName}}</div>
-						  {{dashboard.user.id}}
-						  <a ui-sref="dashboard.event"> events</a>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<ui-view></ui-view>
-					</div>
-                </div>
-            </div>
-        </div>
-        <!-- /#page-content-wrapper -->
-
+        </ul>
     </div>
+    <div class="col m10 margin-top-20">
+         <div class="col m6" id="calendar" ui-calendar="dashboard.uiConfig.calendar" ng-model="dashboard.events"></div>
+          <div class="col m6">
+          <div class="row">
+             <div class="col s12 m6">
+            <div class="card blue-grey darken-1">
+               <img class="col s4 margin-top-20" src="{{dashboard.user.picture}}">
+              <div class="card-content white-text margin-top-20">
+                <span class="card-title">{{dashboard.user.displayName}}</span>
+                 
+                <p>Quote.</p>
+              </div>
+              <div class="card-action">
+                <a href="#">This is a link</a>
+                <a href="#">This is a link</a>
+              </div>
+            </div>
+          </div>
+      </div>
+     </div>
+     <ui-view></ui-view>
+</div>
+					
