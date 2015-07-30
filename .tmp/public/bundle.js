@@ -34913,7 +34913,7 @@
 
 	var moment = __webpack_require__(3);
 	module.exports = angular.module('app').controller('DashboardCtrl', DashboardCtrl);
-	function DashboardCtrl($scope, $http, $auth, Account, $mdToast, uiCalendarConfig, $mdSidenav) {
+	function DashboardCtrl($scope, $http, $auth, Account, $mdToast, uiCalendarConfig, $mdSidenav, $mdBottomSheet) {
 		var dashboard = this;
 		dashboard.events = [];
 		dashboard.clickedCal = function () {
@@ -34977,12 +34977,33 @@
 				console.log(data);
 			});
 		};
-		$('.button-collapse').sideNav({
-			menuWidth: 300, // Default is 240
-			edge: 'right', // Choose the horizontal origin
-			closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
-		});
-		$(".button-collapse").sideNav();
+		dashboard.isOpen = false;
+		dashboard.nav = {
+			isOpen: false,
+			selectedMode: 'md-fling',
+			selectedDirection: 'left'
+		};
+		dashboard.openBottomSheet = function () {
+			$mdBottomSheet.show({
+				templateUrl: './dashboard/events/bottom-sheet.html',
+				controller: 'DashboardCtrl',
+				controllerAs: 'dashboard'
+			});
+		};
+		dashboard.scheduleEvent = function () {
+			console.log('clicked');
+			$http.post('api/event/schedule', {
+				message: {
+					title: dashboard.title,
+					allDay: dashboard.allDay,
+					start: dashboard.startTime,
+					end: dashboard.endTime,
+					editable: dashboard.isEditable,
+					group: dashboard.groupId
+
+				}
+			});
+		};
 	};
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
@@ -35007,11 +35028,6 @@
 					group: event.groupId
 
 				}
-			});
-		};
-		event.openBottomSheet = function () {
-			$mdBottomSheet.show({
-				templateUrl: './dashboard/events/bottom-sheet.html'
 			});
 		};
 	};

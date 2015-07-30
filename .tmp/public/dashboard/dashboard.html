@@ -1,48 +1,72 @@
-<div class="row">
-    <div class="col m2 deep-orange darken-4 z-depth-2 ">
-        <img class="responsive-img margin-top-20" src="./images/logo.png" alt="">
-        <ul class=" teal-text lighten-5-text>
-            <li>
-                    <a href="#">Dashboard</a>
-                </li>
-                <li>
-                    <a href="#">Shortcuts</a>
-                </li>
-                <li>
-                    <a ui-sref="dashboard.event">Events</a>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Services</a>
-                </li>
-                <li>
-                    <a ng-click="dashboard.logout()">Logout</a>
-                </li>
-        </ul>
-    </div>
-    <div class="col m10 margin-top-20">
-         <div class="col m6" id="calendar" ui-calendar="dashboard.uiConfig.calendar" ng-model="dashboard.events"></div>
-          <div class="col m6">
-          <div class="row">
-             <div class="col s12 m6">
-            <div class="card blue-grey darken-1">
-               <img class="col s4 margin-top-20" src="{{dashboard.user.picture}}">
-              <div class="card-content white-text margin-top-20">
-                <span class="card-title">{{dashboard.user.displayName}}</span>
-                 
-                <p>Quote.</p>
-              </div>
-              <div class="card-action">
-                <a href="#">This is a link</a>
-                <a href="#">This is a link</a>
-              </div>
+
+<div class="dashboard">
+    <div layout="row" layout-margin class="cyan">
+
+        <div flex>
+            <img class="responsive-img margin-top-20" src="./images/logo.png" alt="">
+        </div>
+        <div flex>
+            <div class="lock-size" layout="row" layout-align="end center">
+                <md-fab-speed-dial md-open="dashboard.isOpen" md-direction="{{dashboard.nav.selectedDirection}}"
+                                   ng-class="dashboard.nav.selectedMode">
+                    <md-fab-trigger>
+                        <md-button aria-label="menu" class="md-fab md-warn">
+                            <md-icon class="material-icons"">menu</md-icon>
+                        </md-button>
+                    </md-fab-trigger>
+                    <md-fab-actions>
+                        <md-button  class="md-fab md-raised md-mini">
+                            <md-tooltip>
+                               Events
+                            </md-tooltip>
+                            <md-icon class="material-icons cyan-text">perm_contact_calendar</md-icon>
+                        </md-button>
+                        <md-button aria-label="facebook" class="md-fab md-raised md-mini" ng-click="dashboard.openBottomSheet()">
+                            <md-tooltip>
+                                Create Event
+                            </md-tooltip>
+                            <md-icon class="material-icons green-text">add_box</md-icon>
+                        </md-button>
+                        <md-button aria-label="Google hangout" class="md-fab md-raised md-mini" ng-click="dashboard.logout()">
+                            <md-tooltip>
+                                Log out
+                            </md-tooltip>
+                            <md-icon class="material-icons black-text">phonelink_off</md-icon>
+                        </md-button>
+                    </md-fab-actions>
+                </md-fab-speed-dial>
             </div>
-          </div>
-      </div>
-     </div>
-     
-     <ui-view></ui-view>
+        </div>
+
+    </div>
+    <div layout="row" >
+        <md-content>
+            <md-list flex>
+                <md-subheader class="md-no-sticky">3 line item</md-subheader>
+                <md-list-item class="md-3-line" ng-repeat="item in dashboard.user.events">
+                    <img ng-src="{{dashboard.user.picture}}" class="md-avatar" alt="" />
+                    <div class="md-list-item-text">
+                        <h3>{{ item.title }}</h3>
+                        <h4>{{ item.start }}</h4>
+                        <p>{{ item.allDay }}</p>
+                    </div>
+                </md-list-item>
+            </md-list>
+            <md-card flex>
+                <img class="nd-card-image" src="{{dashboard.user.picture}}">
+                <md-card-content>
+                    <ul>
+                        <li>Events: {{dashboard.user.events.length}}</li>
+                        <li>Username: {{dashboard.user.displayName}}</li>
+                    </ul>
+                </md-card-content>
+            </md-card>
+
+        </md-content>
+  </div>
+
+                <ui-view></ui-view>
+        </div>
 </div>
+
 					

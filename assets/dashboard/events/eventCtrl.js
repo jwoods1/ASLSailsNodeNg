@@ -19,10 +19,6 @@ angular
 				}
 			})
 		};
-		event.openBottomSheet = function(){
-			$mdBottomSheet.show({
-			templateUrl: './dashboard/events/bottom-sheet.html'
-		});
-		};
+
 		
     };

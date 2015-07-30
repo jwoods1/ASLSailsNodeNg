@@ -1,15 +1,40 @@
 {
   "data": {
-    "event": [],
+    "event": [
+      {
+        "title": "test",
+        "allDay": null,
+        "start": "2015-07-24T06:00:00.000Z",
+        "end": null,
+        "editable": null,
+        "group": null,
+        "personal": 7,
+        "createdAt": "2015-07-30T06:32:10.829Z",
+        "updatedAt": "2015-07-30T06:32:10.829Z",
+        "id": 1
+      },
+      {
+        "title": "test",
+        "allDay": null,
+        "start": "2015-07-24T06:00:00.000Z",
+        "end": null,
+        "editable": null,
+        "group": null,
+        "personal": 7,
+        "createdAt": "2015-07-30T06:32:11.228Z",
+        "updatedAt": "2015-07-30T06:32:11.228Z",
+        "id": 2
+      }
+    ],
     "group": [],
     "user": [
       {
         "facebook": "537776833041008",
         "displayName": "Jason Woods",
         "picture": "https://graph.facebook.com/537776833041008/picture?type=large",
-        "createdAt": "2015-07-29T17:38:41.039Z",
-        "updatedAt": "2015-07-29T17:38:41.039Z",
-        "id": 5
+        "createdAt": "2015-07-30T04:08:54.581Z",
+        "updatedAt": "2015-07-30T04:08:54.581Z",
+        "id": 7
       }
     ]
   },
@@ -116,10 +141,12 @@
     }
   },
   "counters": {
-    "event": {},
+    "event": {
+      "id": 2
+    },
     "group": {},
     "user": {
-      "id": 5
+      "id": 7
     }
   }
 }
