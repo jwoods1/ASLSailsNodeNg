@@ -1,11 +1,10 @@
 //gloabals
 global.$ = global.jQuery = require('jquery');   
-global.moment = require('moment'); 
+global.moment = require('moment');
 //global.Materialize = require('./libs/materialize');
 
 require('fullcalendar');
 require('hammerjs');
-
 var anglar = require('angular');
 require('angular-ui-router');
 require('satellizer');
@@ -19,7 +18,7 @@ require('./libs/angular-strap-templates');
 require('./app.module');
 //serices
 require('./services/account');
-
+require('angularSails');
 //route config
 require('./app.config');
 require('./home/homeCtrl');

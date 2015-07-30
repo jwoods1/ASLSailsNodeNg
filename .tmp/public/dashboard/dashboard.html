@@ -1,5 +1,5 @@
 
-<div class="dashboard">
+<div class="dashboard cyan lighten-5">
     <div layout="row" layout-margin class="cyan">
 
         <div flex>
@@ -15,9 +15,9 @@
                         </md-button>
                     </md-fab-trigger>
                     <md-fab-actions>
-                        <md-button  class="md-fab md-raised md-mini">
+                        <md-button  class="md-fab md-raised md-mini" ng-click="dashboard.openCalendar()">
                             <md-tooltip>
-                               Events
+                               Events:{{dashboard.user.events.length}}
                             </md-tooltip>
                             <md-icon class="material-icons cyan-text">perm_contact_calendar</md-icon>
                         </md-button>
@@ -27,7 +27,7 @@
                             </md-tooltip>
                             <md-icon class="material-icons green-text">add_box</md-icon>
                         </md-button>
-                        <md-button aria-label="Google hangout" class="md-fab md-raised md-mini" ng-click="dashboard.logout()">
+                        <md-button  class="md-fab md-raised md-mini" ng-click="dashboard.logout()">
                             <md-tooltip>
                                 Log out
                             </md-tooltip>
@@ -40,32 +40,36 @@
 
     </div>
     <div layout="row" >
-        <md-content>
-            <md-list flex>
-                <md-subheader class="md-no-sticky">3 line item</md-subheader>
-                <md-list-item class="md-3-line" ng-repeat="item in dashboard.user.events">
-                    <img ng-src="{{dashboard.user.picture}}" class="md-avatar" alt="" />
-                    <div class="md-list-item-text">
-                        <h3>{{ item.title }}</h3>
-                        <h4>{{ item.start }}</h4>
-                        <p>{{ item.allDay }}</p>
-                    </div>
-                </md-list-item>
-            </md-list>
-            <md-card flex>
-                <img class="nd-card-image" src="{{dashboard.user.picture}}">
-                <md-card-content>
-                    <ul>
-                        <li>Events: {{dashboard.user.events.length}}</li>
-                        <li>Username: {{dashboard.user.displayName}}</li>
-                    </ul>
-                </md-card-content>
-            </md-card>
+        <div flex="40" offset="5">
+            <h2>Events</h2>
+            <h4 ng-if="dashboard.user.events.length === 0">
+                Currently No events. Would like like to create one?
+                <md-button ng-click="dashboard.openBottomSheet()">Create Event</md-button>
+            </h4>
+            <md-card ng-repeat="item in dashboard.user.events" class="grey lighten-1">
+                <md-button  class="md-fab md-raised md-mini" >
+                    <img src="{{dashboard.user.picture}}" class="md-avatar" alt="image caption">
+                </md-button>
 
-        </md-content>
+                <md-card-content>
+                    <h3>Event: {{ item.title }}</h3>
+                    <h4>Stat Time: {{ item.start }}</h4>
+                </md-card-content>
+                <md-card-footer>
+                    <md-button  class="md-fab md-raised md-mini" ng-click="dashboard.deleteEvent(item)">
+                        <md-tooltip>
+                            Delete
+                        </md-tooltip>
+                        <md-icon class="material-icons red-text">remove</md-icon>
+                    </md-button>
+                </md-card-footer>
+            </md-card>
+        </div>
+        <ui-calendar  flex='50' ui-calendar='dashboard.uiConfig' ng-model='dashboard.events'></ui-calendar>
+
   </div>
 
-                <ui-view></ui-view>
+
         </div>
 </div>
 

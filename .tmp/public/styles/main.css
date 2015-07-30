@@ -30,3 +30,9 @@
   height: 300px;
   margin-left: auto;
   margin-right: auto; }
+md-bottom-sheet{
+    margin-bottom:20px;
+}
+ui-calendar{
+    background: #607d8b  !important;
+}

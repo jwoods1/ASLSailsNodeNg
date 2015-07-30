@@ -4,7 +4,7 @@ module.exports =
 angular
     .module('app')
     .controller('DashboardCtrl', DashboardCtrl);
-    function DashboardCtrl($scope, $http, $auth, Account, $mdToast, uiCalendarConfig, $mdSidenav, $mdBottomSheet){
+    function DashboardCtrl($scope, $http, $auth, Account, $mdToast, uiCalendarConfig, $mdSidenav, $mdBottomSheet, $state){
     	var dashboard = this;
 		dashboard.events = [];
 		dashboard.clickedCal = function(){
@@ -69,7 +69,7 @@ angular
 			console.log(data);
 			$http.post('api/event/remove', {id: data.id})
 			.then(function(data, status){
-				console.log(data);
+				dashboard.user.events.splice(data,1);
 			})
 		};
 		dashboard.isOpen = false;
@@ -85,6 +85,12 @@ angular
 				controllerAs: 'dashboard'
 			});
 		};
+		dashboard.openCalendar = function(){
+			$mdBottomSheet.show({
+				template: "<md-bottom-sheet><ui-calendar ui-calendar='dashboard.uiConfig' ng-model='dashboard.events'></ui-calendar></md-bottom-sheet>"
+
+			});
+		};
 		dashboard.scheduleEvent = function(){
 			console.log('clicked');
 			$http.post('api/event/schedule',{
@@ -97,6 +103,17 @@ angular
 					group: dashboard.groupId
 
 				}
+
+			}).then(function(x){
+				$mdBottomSheet.cancel();
+				console.log(x);
+				var data = x.config.data.message;
+				var update = $http.get('/api/user/me');
+				dashboard.user.events.push(data);
+
+
 			})
+
 		};
+
     };

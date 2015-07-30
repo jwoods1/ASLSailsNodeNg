@@ -20,7 +20,7 @@ module.exports = {
 				group: event.groupId,
 				personal: user
 			}).exec(function(err, event){
-				 res.status(200).end();
+				 res.status(200, event).end();
 			})
 		})
 	
