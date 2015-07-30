@@ -4,12 +4,13 @@ module.exports =
 angular
     .module('app')
     .controller('DashboardCtrl', DashboardCtrl);
-    function DashboardCtrl($scope, $http, $auth, Account, $alert, uiCalendarConfig){
+    function DashboardCtrl($scope, $http, $auth, Account, $mdToast, uiCalendarConfig, $mdSidenav){
     	var dashboard = this;
 		dashboard.events = [];
 		dashboard.clickedCal = function(){
 			console.log('clicked cal');
 		};
+		
 		dashboard.clickEvent = function(calEvent, jsEvent, view){
 			console.log('Clicked on : '+ calEvent.title);	
 		};
@@ -18,7 +19,7 @@ angular
 				height:450,
 				editable:true,
 				header:{
-					left:'month basicWeek basicDay agendaWeek agendaDay',
+					left:'month agendaWeek agendaDay',
 					center: 'title',
 					right: 'today prev,next'
 				},
@@ -70,6 +71,12 @@ angular
 			.then(function(data, status){
 				console.log(data);
 			})
-		}
-
+		};
+		 $('.button-collapse').sideNav({
+		      menuWidth: 300, // Default is 240
+		      edge: 'right', // Choose the horizontal origin
+		      closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+		    }
+		  );
+		   $(".button-collapse").sideNav();
     };

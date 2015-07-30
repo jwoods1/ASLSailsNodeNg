@@ -2,7 +2,16 @@
   "data": {
     "event": [],
     "group": [],
-    "user": []
+    "user": [
+      {
+        "facebook": "537776833041008",
+        "displayName": "Jason Woods",
+        "picture": "https://graph.facebook.com/537776833041008/picture?type=large",
+        "createdAt": "2015-07-29T17:38:41.039Z",
+        "updatedAt": "2015-07-29T17:38:41.039Z",
+        "id": 5
+      }
+    ]
   },
   "schema": {
     "event": {
@@ -109,6 +118,8 @@
   "counters": {
     "event": {},
     "group": {},
-    "user": {}
+    "user": {
+      "id": 5
+    }
   }
 }

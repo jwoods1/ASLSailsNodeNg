@@ -3,7 +3,7 @@ module.exports =
 angular
     .module('app')
     .controller('EventCtrl', EventCtrl);
-    function EventCtrl($scope, $http){
+    function EventCtrl($scope, $http, $mdBottomSheet){
     	var event = this;
 		
 		event.scheduleEvent = function(){
@@ -18,8 +18,11 @@ angular
 				
 				}
 			})
-			console.log("sent");
 		};
-
+		event.openBottomSheet = function(){
+			$mdBottomSheet.show({
+			templateUrl: './dashboard/events/bottom-sheet.html'
+		});
+		};
 		
     };

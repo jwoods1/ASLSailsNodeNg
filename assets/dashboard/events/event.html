@@ -16,15 +16,16 @@
      </tr>
    </tbody>
 </table>
-<button class="btn btn-success" data-toggle="modal" data-target="#createModal" >Create Event</button>
+<md-button ng-click="event.openBottomSheet()">
+    Open a Bottom Sheet!
+  </md-button>
+<a class="waves-effect waves-light btn modal-trigger" href="#createModal" >Create Event</a>
 
 
 
-<div class="modal fade" id="createModal">
-  <div class="modal-dialog">
+<div class="modal" id="createModal">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">Create New Event</h4>
       </div>
       <div class="modal-body">
@@ -38,7 +39,7 @@
           <div class="form-group">
             <label for="start" class="col-sm-2 control-label">Start Time</label>
             <div class="col-sm-10">
-              <input type="date" class="form-control" id="start" ng-model="event.startTime">
+              <input type="date" class="datepicker" id="start" ng-model="event.startTime">
             </div>
             <div class="form-group">
             <label for="end" class="col-sm-2 control-label">End Time</label>
@@ -74,9 +75,8 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" ng-click="event.scheduleEvent()">Save</button>
+        <button type="button" class="modal-action modal-close btn-flat" data-dismiss="modal">Close</button>
+        <button type="button" class="modal-action modal-close btn-flat" ng-click="event.scheduleEvent()">Save</button>
       </div>
     </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
